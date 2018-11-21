@@ -1,0 +1,63 @@
+{
+	"name": "server",
+	"version": "1.0.0",
+	"description": "RESTful API for project ''",
+	"main": "server.js",
+	"scripts": {
+		"dev": "better-npm-run dev",
+		"prod": "better-npm-run prod",
+		"test": "better-npm-run test"
+	},
+	"betterScripts": {
+		"dev": {
+			"command": "nodemon --exec babel-node src/server.js",
+			"env": {
+				"NODE_ENV": "dev"	
+			}
+		},
+		"prod": {
+			"command": "pm2 start --interpreter babel-node src/server.js",
+			"env": {
+				"NODE_ENV": "prod"
+			}
+		},
+		"test": {
+			"command": "",
+			"env": {
+				"NODE_ENV": "test"
+			}
+		}
+	},
+	"author": "Serhii Pyrozhenko",
+	"license": "unlicensed",
+	"dependencies": {
+		"async": "^2.6.1",
+		"babel-cli": "^6.26.0",
+		"babel-plugin-add-module-exports": "^1.0.0",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-stage-0": "^6.24.1",
+		"babel-preset-stage-2": "^6.24.1",
+		"better-npm-run": "^0.1.1",
+		"body-parser": "^1.18.3",
+		"bson": "^3.0.2",
+		"cors": "^2.8.4",
+		"dotenv": "^6.0.0",
+		"express": "^4.16.3",
+		"express-brute": "^1.0.1",
+		"express-jwt": "^5.3.1",
+		"express-jwt-blacklist": "^1.1.0",
+		"express-rate-limit": "^3.2.0",
+		"forever": "^0.15.3",
+		"helmet": "^3.13.0",
+		"jsonwebtoken": "^8.3.0",
+		"lodash": "^4.17.11",
+		"mongoose": "^5.3.8",
+		"mongoose-bcrypt": "^1.6.0",
+		"mongoose-timestamp": "^0.6.0",
+		"nodemailer": "^4.6.8",
+		"nodemon": "^1.18.5",
+		"redis": "^2.8.0",
+		"shortid": "^2.2.13",
+		"winston": "^3.1.0"
+	}
+}
