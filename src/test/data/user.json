@@ -1,0 +1,71 @@
+{
+    "valid": {
+        "username":"test_username",
+        "email":"test@test.com",
+        "password":"TestPass123",
+        "age": 25
+    },
+    "existing": {
+        "username": "test_username",
+        "email": "test@test.com",
+        "password": "TestPass123",
+        "age": 25
+    },
+    "empty": {},
+    "auth": {
+        "email": "test@test.com",
+        "password": "TestPass123"
+    },
+    "authMissed": {
+        "email": "test@test.com"
+    },
+    "update": {
+        "username": "new_test_username",
+        "email": "new_test@test.com",
+        "password": "NewTestPass123",
+        "age": 26
+    },
+    "wrongUsername": {
+        "username": "",
+        "email": "test@test.com",
+        "password": "TestPass123",
+        "age": 25
+    },
+    "wrongEmail": { 
+        "username": "",
+        "email": "@test.com",
+        "password": "TestPass123",
+        "age": 25
+    },
+    "wrongEmail2": {
+        "username": "",
+        "email": "test@.com",
+        "password": "TestPass123",
+        "age": 25
+    },
+    "wrongEmail3": {
+        "username": "",
+        "email": "test@test",
+        "password": "TestPass123",
+        "age": 25
+    },
+    "wrongPassword": {
+        "username":"test_username",
+        "email":"test@test.com",
+        "password":"wrong pass",
+        "age": 25
+    },
+    "wrongAge": {
+        "username":"test_username",
+        "email":"test@test.com",
+        "password":"TestPass123",
+        "age": 1
+    },
+    "wrongImage": {
+        "username":"test_username",
+        "email":"test@test.com",
+        "password":"TestPass123",
+        "age": 25,
+        "image": "wrong image url"
+    }
+}

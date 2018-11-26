@@ -25,7 +25,8 @@ const UserSchema = new Schema({
         type: String,
         lowercase: true,
         trim: true,
-        required: [true, 'Username is required']
+        required: [true, 'Username is required'],
+        minlength: [3, 'Username must contains at least 3 character']
     },
     password: {
         type: String,

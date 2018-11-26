@@ -68,7 +68,7 @@ const test = {
     api: {
         port: 3000,
         secret: 'secret',
-        logFile: 'errors.log'
+        logFile: 'exceptions_test.log'
 
     },
     db: {

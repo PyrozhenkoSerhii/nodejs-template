@@ -12,7 +12,7 @@
 		"dev": {
 			"command": "nodemon --exec babel-node src/server.js",
 			"env": {
-				"NODE_ENV": "dev"	
+				"NODE_ENV": "dev"
 			}
 		},
 		"prod": {
@@ -22,7 +22,7 @@
 			}
 		},
 		"test": {
-			"command": "",
+			"command": "mocha --require babel-core/register --require mocha-clean --timeout 5000 src/test/*.test.js",
 			"env": {
 				"NODE_ENV": "test"
 			}
@@ -40,6 +40,7 @@
 		"better-npm-run": "^0.1.1",
 		"body-parser": "^1.18.3",
 		"bson": "^3.0.2",
+		"chai": "^4.2.0",
 		"cors": "^2.8.4",
 		"dotenv": "^6.0.0",
 		"express": "^4.16.3",
@@ -51,6 +52,9 @@
 		"helmet": "^3.13.0",
 		"jsonwebtoken": "^8.3.0",
 		"lodash": "^4.17.11",
+		"mocha": "^5.2.0",
+		"mocha-clean": "^1.0.0",
+		"mockgoose": "^7.3.5",
 		"mongoose": "^5.3.8",
 		"mongoose-bcrypt": "^1.6.0",
 		"mongoose-timestamp": "^0.6.0",
@@ -58,6 +62,7 @@
 		"nodemon": "^1.18.5",
 		"redis": "^2.8.0",
 		"shortid": "^2.2.13",
+		"supertest": "^3.3.0",
 		"winston": "^3.1.0"
 	}
 }

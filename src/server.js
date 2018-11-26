@@ -37,7 +37,8 @@ api.use(cors())
 api.use(bodyParser.urlencoded({ extended: true }))
 api.use(bodyParser.json())
 api.use(limiter)
-api.use(jwt({
+
+enviroment !== 'test' && api.use(jwt({
     secret: config.api.secret,
 }).unless(req =>
     req.originalUrl === '/' ||
@@ -81,3 +82,6 @@ api.listen(config.api.port, err => {
         logger.info(`[API] Server is running on port ${config.api.port}`)
     }
 })
+
+
+exports.default = api

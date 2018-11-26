@@ -1,5 +1,7 @@
 import _ from 'lodash'
 
+const enviroment = process.env.NODE_ENV || 'dev'
+
 import User from '../models/User'
 import redis from '../utils/redis'
 import logger from '../utils/logger'
@@ -10,10 +12,9 @@ import { sign } from '../utils/jwt'
 
 const ObjectId = require('mongoose').Types.ObjectId
 const UNIQUE_CHECK_FAILED_CODE = 11000
-const enviroment = process.env.NODE_ENV || 'dev'
 
 
-let transport = null;
+let transport = null
 if (enviroment !== 'dev') {
     createTestTransport(callback => transport = callback)
 } else {
@@ -82,8 +83,8 @@ exports.post = (req, res) => {
         })
 
 
-        return res.status(201).send({ data: savedUser });
-    });
+        return res.status(201).send({ data: savedUser })
+    })
 }
 
 
@@ -117,7 +118,7 @@ exports.put = (req, res) => {
                 })
             })
 
-            return res.status(204)
+            return res.status(200).send({message: 'User was updated'})
         });
     })
 }
@@ -133,16 +134,21 @@ exports.delete = (req, res) => {
         user.remove(err => {
             if (err) return res.status(500).send({ error: `Something went wrong while deleting user with id ${req.params.id}.` })
 
-            return res.status(204);
-        });
+            redis.del(req.params.id, err => {
+                if (err) logger.error(`[Redis] Error occured while attempting to delete user with id ${req.params.id} `)
+                else logger.info(`[Redis] User with id (${req.params.id}) was deleted`)
+
+                return res.status(200).send({message: 'User was deleted'})
+            })
+        })
     })
 }
 
 
 exports.authenticate = (req, res) => {
-    if (!req.body.username || !req.body.password) return res.status(400).json({ error: 'Username and password are required!' })
+    if (!req.body.email || !req.body.password) return res.status(400).json({ error: 'Email and password are required!' })
 
-    User.findOne({ username: req.body.username }).select('+password').exec((err, user) => {
+    User.findOne({ email: req.body.email }).select('+password').exec((err, user) => {
         if (err) return res.status(500).send({ error: `Something went wrong while fetching user with id ${req.params.id}.` })
         if (!user) return res.status(400).send({ error: 'Wrong username or password' })
         if (!user.verified) return res.status(403).send({ error: 'You need to verify your email first' })
@@ -156,7 +162,7 @@ exports.authenticate = (req, res) => {
                 return res.status(200).send({ token })
             }
 
-            return res.status(400).send({ error: 'Username or password is incorrect' })
+            return res.status(400).send({ error: 'Email or password is incorrect' })
         })
     })
 }
@@ -236,7 +242,7 @@ exports.resetPasswordConfirm = (req, res) => {
                     })
                 })
 
-                return res.status(204)
+                return res.status(200).send({message: 'Password was changed'})
             })
         })
     })
@@ -273,9 +279,9 @@ exports.verifying = (req, res) => {
         user.verified = true
 
         user.save(err => {
-            if (err) return res.status(500).send({ error: `Something went wrong while verifying email of user ${req.params.id}.` });
+            if (err) return res.status(500).send({ error: `Something went wrong while verifying email of user ${req.params.id}.` })
 
-            return res.status(200).send('Email was verified!');
+            return res.status(200).send({ message: 'Email was verified!' })
         })
     })
 }
