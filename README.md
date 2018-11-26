@@ -1,4 +1,4 @@
-This is my node.js template for quick start of a new projects.
+### This is my node.js template for quick start of a new projects.
 
 Included features:
 - babel transpiler
@@ -13,12 +13,12 @@ Included features:
 - nodemailer
 - better-npm-runner
 
-Implemented example of basic user entity with router:
+### Implemented example of basic entity of user:
 - model + submodels
 - router
 - controller with error handling
 
-Future features: 
-- jwt blacklist
-- pm2/forever
-- test system
+### Future features: 
+- [ ] jwt blacklist
+- [ ] pm2/forever
+- [ ] test system
