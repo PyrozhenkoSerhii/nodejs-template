@@ -63,7 +63,6 @@ api.get('*', (req, res) => {
     res.status(404).send({ error: `${req.originalUrl} not found!` })
 })
 
-
 mongoose.connect(config.db.connectionString, config.db.options).then(
     () => logger.info(`[API] Connection to ${config.db.databaseName} db was established `),
     err => logger.error(`[API] Error occured while connection to ${config.db.databaseName} db`, err)

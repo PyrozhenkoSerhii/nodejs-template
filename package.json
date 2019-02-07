@@ -54,7 +54,6 @@
 		"lodash": "^4.17.11",
 		"mocha": "^5.2.0",
 		"mocha-clean": "^1.0.0",
-		"mockgoose": "^7.3.5",
 		"mongoose": "^5.3.8",
 		"mongoose-bcrypt": "^1.6.0",
 		"mongoose-timestamp": "^0.6.0",

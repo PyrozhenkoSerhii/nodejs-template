@@ -15,7 +15,7 @@ const UNIQUE_CHECK_FAILED_CODE = 11000
 
 
 let transport = null
-if (enviroment !== 'dev') {
+if (enviroment === 'test') {
     createTestTransport(callback => transport = callback)
 } else {
     createGmailTransport(callback => transport = callback)

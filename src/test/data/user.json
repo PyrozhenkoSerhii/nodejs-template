@@ -32,19 +32,19 @@
         "age": 25
     },
     "wrongEmail": { 
-        "username": "",
+        "username": "test_username",
         "email": "@test.com",
         "password": "TestPass123",
         "age": 25
     },
     "wrongEmail2": {
-        "username": "",
+        "username": "test_username",
         "email": "test@.com",
         "password": "TestPass123",
         "age": 25
     },
     "wrongEmail3": {
-        "username": "",
+        "username": "test_username",
         "email": "test@test",
         "password": "TestPass123",
         "age": 25
